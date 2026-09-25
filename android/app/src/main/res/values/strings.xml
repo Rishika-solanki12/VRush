@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">VRush</string>
+    <string name="title_activity_main">VRush</string>
+    <string name="package_name">com.vrush.game</string>
+    <string name="custom_url_scheme">com.vrush.game</string>
+</resources>

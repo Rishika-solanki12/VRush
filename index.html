@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Don't Stop Moving</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div id="game">
+
+    <!-- SKY -->
+    <div id="sky">
+      <div class="cloud cloud1"></div>
+      <div class="cloud cloud2"></div>
+      <div class="cloud cloud3"></div>
+      <div id="moon">🌙</div>
+    </div>
+
+    <!-- FOREST -->
+    <div id="forestScenery">
+      <div class="tree tree1">🌲</div>
+      <div class="tree tree2">🌲</div>
+      <div class="tree tree3">🌳</div>
+      <div class="tree tree4">🌲</div>
+    </div>
+
+    <!-- CITY -->
+    <div id="cityScenery">
+      <div class="building b1"></div>
+      <div class="building b2"></div>
+      <div class="building b3"></div>
+      <div class="building b4"></div>
+      <div class="streetLamp lamp1">💡</div>
+      <div class="streetLamp lamp2">💡</div>
+    </div>
+
+    <!-- NIGHT CITY -->
+    <div id="nightScenery">
+      <div class="nightBuilding nb1"></div>
+      <div class="nightBuilding nb2"></div>
+      <div class="nightBuilding nb3"></div>
+      <div class="nightLight nl1">🟡</div>
+      <div class="nightLight nl2">🟡</div>
+      <div class="nightLight nl3">🟡</div>
+    </div>
+
+    <!-- HAUNTED -->
+    <div id="hauntedScenery">
+      <div class="grave grave1">🪦</div>
+      <div class="grave grave2">🪦</div>
+      <div class="grave grave3">🪦</div>
+      <div class="deadTree dt1">🌲</div>
+      <div class="deadTree dt2">🌲</div>
+      <div class="hauntedHouse">🏚️</div>
+    </div>
+
+    <div id="hauntedFog"></div>
+
+    <!-- START MENU -->
+    <div id="startMenu">
+
+      <div class="gameLogo">
+        <div class="logoSmall">DON'T</div>
+        <div class="logoMain">STOP MOVING</div>
+        <div class="logoSub">RUN • SURVIVE • MASTER</div>
+      </div>
+
+      <div class="menuStats">
+        <div>🏆 Best: <span id="bestScore">0</span></div>
+        <div>🪙 Coins: <span id="menuCoins">0</span></div>
+      </div>
+
+      <div class="menuButtons">
+        <button id="playBtn" class="mainButton">▶ PLAY</button>
+        <button id="shopBtn" class="mainButton secondaryButton">🏪 SHOP</button>
+        <button id="missionsBtn" class="mainButton secondaryButton">🎯 MISSIONS</button>
+      </div>
+
+      <div class="characterQuick">
+        <span>Character:</span>
+        <strong id="equippedCharacterName">Classic Boy</strong>
+      </div>
+
+      <button id="soundBtn" class="soundButton">🔊 SOUND ON</button>
+    </div>
+
+    <!-- SHOP -->
+    <div id="shopPanel" class="overlayPanel hidden">
+
+      <div class="panelHeader">
+        <div>
+          <div class="panelTitle">🏪 SHOP</div>
+          <div class="panelSubtitle">Customize your runner</div>
+        </div>
+
+        <div class="shopCoins">
+          🪙 <span id="shopCoins">0</span>
+        </div>
+      </div>
+
+      <div class="shopTabs">
+        <button class="shopTab active" data-tab="characters">
+          👤 CHARACTERS
+        </button>
+        <button class="shopTab" data-tab="effects">
+          ✨ EFFECTS
+        </button>
+      </div>
+
+      <div id="charactersShop" class="shopGrid"></div>
+      <div id="effectsShop" class="shopGrid hidden"></div>
+
+      <button id="closeShopBtn" class="closePanelBtn">
+        ✕ CLOSE
+      </button>
+    </div>
+
+    <!-- MISSIONS -->
+    <div id="missionsPanel" class="overlayPanel hidden">
+
+      <div class="panelHeader">
+        <div>
+          <div class="panelTitle">🎯 MISSIONS</div>
+          <div class="panelSubtitle">Complete missions and earn coins</div>
+        </div>
+      </div>
+
+      <div id="missionList"></div>
+
+      <button id="closeMissionsBtn" class="closePanelBtn">
+        ✕ CLOSE
+      </button>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud">
+
+      <div class="hudLeft">
+        <div class="hudBox">
+          SCORE
+          <strong id="score">0</strong>
+        </div>
+
+        <div class="hudBox">
+          LEVEL
+          <strong id="level">1</strong>
+        </div>
+
+        <div class="hudBox worldBox">
+          WORLD
+          <strong id="world">FOREST</strong>
+        </div>
+      </div>
+
+      <div class="hudRight">
+        <div class="hudBox">
+          🪙 <strong id="runCoins">0</strong>
+        </div>
+
+        <button id="pauseBtn">Ⅱ</button>
+      </div>
+    </div>
+
+    <!-- LIVES -->
+    <div id="lives">
+      ❤️❤️❤️
+    </div>
+
+    <!-- POWER HUD -->
+    <div id="powerHud"></div>
+
+    <!-- WARNINGS -->
+    <div id="nightWarning">
+      🌙 NIGHT CITY
+    </div>
+
+    <div id="hauntedWarning">
+      👻 HAUNTED AREA
+    </div>
+
+    <!-- PLAYER -->
+    <div id="player">
+
+      <div id="playerTrail"></div>
+
+      <span id="playerEmoji">👦</span>
+
+      <div id="playerHitbox"></div>
+
+    </div>
+
+    <!-- OBJECTS -->
+    <div id="objects"></div>
+
+    <!-- GROUND -->
+    <div id="ground"></div>
+
+    <!-- GAME OVER -->
+    <div id="gameOver" class="hidden">
+
+      <div class="gameOverCard">
+
+        <div class="gameOverTitle">
+          GAME OVER
+        </div>
+
+        <div class="gameOverStats">
+          <div>
+            SCORE
+            <strong id="finalScore">0</strong>
+          </div>
+
+          <div>
+            COINS
+            <strong id="finalCoins">0</strong>
+          </div>
+
+          <div>
+            BEST
+            <strong id="finalBest">0</strong>
+          </div>
+        </div>
+
+        <div class="gameOverButtons">
+          <button id="restartBtn">🔄 PLAY AGAIN</button>
+          <button id="menuBtn">🏠 MENU</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MISSION TOAST -->
+    <div id="missionToast"></div>
+
+    <!-- SHOP TOAST -->
+    <div id="shopToast"></div>
+
+    <!-- MOBILE CONTROLS -->
+    <div id="mobileControls">
+
+      <button id="mobileLeft">◀</button>
+
+      <button id="mobileJump">⬆</button>
+
+      <button id="mobileRight">▶</button>
+
+    </div>
+
+  </div>
+
+  <script src="game.js"></script>
+
+</body>
+</html>
